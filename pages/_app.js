@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { app } from '../firebase';
+import { ThemeProvider } from '../contexts/ThemeContext'; // Importar o ThemeProvider
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
@@ -20,7 +21,11 @@ function MyApp({ Component, pageProps }) {
     return () => unsubscribe();
   }, [router]);
 
-  return <Component {...pageProps} user={user} />;
+  return (
+    <ThemeProvider> {/* Envolver o componente com ThemeProvider */}
+      <Component {...pageProps} user={user} />
+    </ThemeProvider>
+  );
 }
 
 export default MyApp;

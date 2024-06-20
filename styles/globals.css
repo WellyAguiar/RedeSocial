@@ -1,0 +1,25 @@
+:root {
+    --navbar-bg: #f0f0f0; /* Cor levemente diferente do fundo do site */
+    --text-color: black;
+    --post-bg: #ffffff; /* Cor do fundo dos posts no tema claro */
+    --highlight-bg: #e0ffe0; /* Cor de destaque para posts do usuário */
+  }
+  
+  [data-theme='dark'] {
+    --navbar-bg: #1e1e1e; /* Cor levemente diferente do fundo do site no tema escuro */
+    --text-color: white;
+    --post-bg: #2e2e2e; /* Cor do fundo dos posts no tema escuro */
+    --highlight-bg: #444444; /* Cor de destaque para posts do usuário no tema escuro */
+    --background-color: #121212;
+    color: white;
+  }
+  
+  [data-theme='light'] {
+    --navbar-bg: #f0f0f0;
+    --text-color: black;
+    --post-bg: #ffffff;
+    --highlight-bg: #e0ffe0;
+    --background-color: white;
+    color: black;
+  }
+  
