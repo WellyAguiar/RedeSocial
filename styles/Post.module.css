@@ -30,35 +30,24 @@
   background-color: #005bb5;
 }
 
-.postList {
-  list-style: none;
-  padding: 0;
-}
-
-.postItem {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-
-.postList li {
+.postContent {
   background-color: #f9f9f9;
-  margin: 10px 0;
   padding: 20px;
   border-radius: 5px;
-  transition: box-shadow 0.3s ease;
   word-break: break-word; /* Adiciona essa linha */
 }
 
-.postList li:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.backButton {
+  text-decoration: none;
+  color: white;
+  background-color: #0070f3;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin-top: 20px;
 }
 
-.postList h2 {
-  margin: 0 0 10px;
-}
-
-.postList p {
-  margin: 0;
-  color: #666;
+.backButton:hover {
+  background-color: #005bb5;
 }
