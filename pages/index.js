@@ -40,7 +40,7 @@ export default function Home({ user }) {
             <Link href="/create" legacyBehavior>
               <a>Create New Post</a>
             </Link>
-            <button onClick={handleLogout} className={styles.logoutButton}>Logout</button>
+            <button onClick={handleLogout} className={styles.logoutButton}>SAIR</button>
           </>
         )}
       </div>
