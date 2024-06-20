@@ -1,6 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: var(--background-color);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
 }
@@ -16,7 +17,7 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  background: #fff;
+  background: var(--post-bg);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -33,21 +34,21 @@ form {
 
 form input {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
 }
 
 form button {
   padding: 10px;
   border: none;
-  background-color: #007bff;
+  background-color: var(--primary-color);
   color: white;
   border-radius: 4px;
   cursor: pointer;
 }
 
 form button:hover {
-  background-color: #0056b3;
+  background-color: var(--primary-hover-color);
 }
 
 #recaptcha-container {

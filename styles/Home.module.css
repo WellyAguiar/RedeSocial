@@ -1,10 +1,10 @@
 .container {
-  display: flex; /* Flex container to push the content */
+  display: flex;
   height: 100vh;
 }
 
 .mainContent {
-  flex: 1; /* Grow to take available space */
+  flex: 1;
   padding: 20px;
   font-family: Arial, sans-serif;
   background-color: var(--background-color);
@@ -26,14 +26,14 @@
 .createPostLink {
   text-decoration: none;
   color: white;
-  background-color: #0070f3;
+  background-color: var(--primary-color);
   padding: 10px 20px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 
 .createPostLink:hover {
-  background-color: #005bb5;
+  background-color: var(--primary-hover-color);
 }
 
 .postList {
@@ -66,9 +66,9 @@
 
 .postList p {
   margin: 0;
-  color: #666;
+  color: var(--text-color);
 }
 
 .username {
-  color: purple;
+  color: blueviolet;
 }

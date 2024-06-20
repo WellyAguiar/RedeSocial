@@ -35,6 +35,7 @@
   .username {
     margin-bottom: auto;
     cursor: pointer;
+    font-size: 30px;
   }
   
   .bottomButtons {
