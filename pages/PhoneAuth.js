@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import { useRouter } from 'next/router';
 import styles from '../styles/Form.module.css';
 
 export default function PhoneAuth() {
@@ -7,6 +8,7 @@ export default function PhoneAuth() {
   const [verificationCode, setVerificationCode] = useState('');
   const [confirmationResult, setConfirmationResult] = useState(null);
   const auth = getAuth();
+  const router = useRouter();
 
   const setUpRecaptcha = () => {
     window.recaptchaVerifier = new RecaptchaVerifier(auth,'recaptcha-container', {
@@ -36,11 +38,14 @@ export default function PhoneAuth() {
   };
 
   const handleVerifyCode = (e) => {
+    
     e.preventDefault();
     if (confirmationResult) {
+      
       confirmationResult.confirm(verificationCode)
         .then((result) => {
           console.log("User signed in successfully", result.user);
+          
         })
         .catch((error) => {
           console.error("Error verifying code", error);
