@@ -27,7 +27,7 @@ export default function PhoneAuth() {
     setUpRecaptcha();
     const appVerifier = window.recaptchaVerifier;
 
-    signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+    signInWithPhoneNumber(auth, "+55" + phoneNumber, appVerifier)
       .then((result) => {
         setConfirmationResult(result);
         console.log("Code sent");

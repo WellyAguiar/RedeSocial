@@ -6,7 +6,6 @@ import { addDoc, collection, doc, getDoc } from 'firebase/firestore';
 import styles from '../styles/Form.module.css';
 
 export default function CreatePost({ user }) {
-  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [username, setUsername] = useState('');
   const router = useRouter();
@@ -31,10 +30,11 @@ export default function CreatePost({ user }) {
     }
     try {
       await addDoc(collection(db, 'posts'), {
-        title,
         content,
         userId: user.uid,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        likes: 0,
+        likedBy: []
       });
       router.push('/');
     } catch (error) {
@@ -47,13 +47,6 @@ export default function CreatePost({ user }) {
     <div className={styles.container}>
       <h1>Create Post</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className={styles.input}
-        />
         <textarea
           placeholder="Content"
           value={content}
