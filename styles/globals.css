@@ -1,34 +1,39 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
-    --navbar-bg: #f0f0f0; /* Cor levemente diferente do fundo do site */
-    --background-color: #ffffff; /* Fundo padrão do site */
-    --text-color: black; /* Cor do texto padrão */
-    --post-bg: #ffffff; /* Cor do fundo dos posts no tema claro */
-    --highlight-bg: #fce0ff; /* Cor de destaque para posts do usuário */
-    --border-color: #ddd; /* Cor padrão da borda */
-    --primary-color: #b300ff; /* Cor principal dos botões */
-    --primary-hover-color: #8f00b3; /* Cor dos botões ao passar o mouse */
-    --secondary-color: #999; /* Cor dos botões secundários */
-    --secondary-hover-color: #666; /* Cor dos botões secundários ao passar o mouse */
-    --danger-color: #d9534f; /* Cor dos botões de perigo */
-    --danger-hover-color: #c9302c; /* Cor dos botões de perigo ao passar o mouse */
-    --error-color: red; /* Cor das mensagens de erro */
-    --success-color: green; /* Cor das mensagens de sucesso */
-  }
-  
-  [data-theme='dark'] {
-    --navbar-bg: #1e1e1e; /* Cor levemente diferente do fundo do site no tema escuro */
-    --background-color: #121212; /* Fundo padrão do site no tema escuro */
-    --text-color: white; /* Cor do texto no tema escuro */
-    --post-bg: #2e2e2e; /* Cor do fundo dos posts no tema escuro */
-    --highlight-bg: #444444; /* Cor de destaque para posts do usuário no tema escuro */
-    --border-color: #444; /* Cor da borda no tema escuro */
-    --primary-color: #b300ff; /* Cor principal dos botões */
-    --primary-hover-color: #9500b3; /* Cor dos botões ao passar o mouse */
-    --secondary-color: #999; /* Cor dos botões secundários */
-    --secondary-hover-color: #666; /* Cor dos botões secundários ao passar o mouse */
-    --danger-color: #d9534f; /* Cor dos botões de perigo */
-    --danger-hover-color: #c9302c; /* Cor dos botões de perigo ao passar o mouse */
-    --error-color: red; /* Cor das mensagens de erro */
-    --success-color: green; /* Cor das mensagens de sucesso */
-  }
-  
+    --navbar-bg: #f0f0f0;
+    --background-color: #ffffff;
+    --text-color: black;
+    --post-bg: #f0f0f0;
+    --highlight-bg: #fce0ff;
+    --border-color: #ddd;
+    --primary-color: #b300ff;
+    --primary-hover-color: #8f00b3;
+    --secondary-color: #999;
+    --secondary-hover-color: #666;
+    --danger-color: #d9534f;
+    --danger-hover-color: #c9302c;
+    --error-color: red;
+    --success-color: green;
+}
+
+[data-theme='dark'] {
+    --navbar-bg: #1e1e1e;
+    --background-color: #121212;
+    --text-color: white;
+    --post-bg: #2e2e2e;
+    --highlight-bg: #444444;
+    --border-color: #444;
+    --primary-color: #b300ff;
+    --primary-hover-color: #9500b3;
+    --secondary-color: #999;
+    --secondary-hover-color: #666;
+    --danger-color: #d9534f;
+    --danger-hover-color: #c9302c;
+    --error-color: red;
+    --success-color: green;
+}

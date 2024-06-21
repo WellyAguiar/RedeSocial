@@ -1,4 +1,3 @@
-// pages/api/posts/[id].js
 import { db } from '../../../firebase';
 import { doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 
@@ -20,15 +19,15 @@ export default async function handler(req, res) {
       res.status(500).json({ error: 'Failed to fetch post' });
     }
   } else if (req.method === 'PUT') {
-    const { title, content } = req.body;
-    if (!title || !content) {
-      return res.status(400).json({ error: 'Title and content are required' });
+    const { content, likes, likedBy, responses } = req.body;
+    if (!content) {
+      return res.status(400).json({ error: 'Content is required' });
     }
 
     try {
       const docRef = doc(db, 'posts', id);
-      await updateDoc(docRef, { title, content });
-      res.status(200).json({ id, title, content });
+      await updateDoc(docRef, { content, likes, likedBy, responses });
+      res.status(200).json({ id, content, likes, likedBy, responses });
     } catch (error) {
       console.error('Error updating document: ', error);
       res.status(500).json({ error: 'Failed to update post' });

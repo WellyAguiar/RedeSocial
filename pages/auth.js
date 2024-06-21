@@ -5,6 +5,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import EmailAuth from './EmailAuth';
 import PhoneAuth from './PhoneAuth';
+import ThemeToggle from '../components/ThemeToggle'; // Importar o botão de alternância de tema
 import styles from '../styles/Form.module.css';
 
 export default function Auth() {
@@ -28,6 +29,7 @@ export default function Auth() {
 
   return (
     <div className="App">
+      <ThemeToggle /> {/* Adicionar o botão de alternância de tema */}
       <div className="auth-wrapper">
         <EmailAuth />
         <PhoneAuth />

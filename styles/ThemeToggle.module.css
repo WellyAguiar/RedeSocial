@@ -1,0 +1,8 @@
+.themeToggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 20px; /* Adicionar espaço abaixo do botão de alternância de tema */
+}
