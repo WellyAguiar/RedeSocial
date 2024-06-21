@@ -1,21 +1,35 @@
-// pages/api/posts.js
 import { db } from '../../firebase';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { collection, addDoc, getDocs, updateDoc, doc, arrayUnion } from 'firebase/firestore';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { title, content } = req.body;
+    const { title, content, responseTo } = req.body;
     if (!title || !content) {
       return res.status(400).json({ error: 'Title and content are required' });
     }
 
     try {
-      const docRef = await addDoc(collection(db, 'posts'), {
+      const newPost = {
         title,
         content,
-        createdAt: new Date().toISOString()
-      });
-      res.status(201).json({ id: docRef.id, title, content });
+        responseTo: responseTo || null,
+        createdAt: new Date().toISOString(),
+        likes: 0,
+        likedBy: [],
+        responses: []
+      };
+
+      const docRef = await addDoc(collection(db, 'posts'), newPost);
+
+      // Update the original post to include the new response ID
+      if (responseTo) {
+        const originalPostRef = doc(db, 'posts', responseTo);
+        await updateDoc(originalPostRef, {
+          responses: arrayUnion(docRef.id)
+        });
+      }
+
+      res.status(201).json({ id: docRef.id, ...newPost });
     } catch (error) {
       console.error('Error adding document: ', error);
       res.status(500).json({ error: 'Failed to save post' });

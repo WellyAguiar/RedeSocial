@@ -1,3 +1,4 @@
+// pages/index.js
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
@@ -5,6 +6,7 @@ import styles from '../styles/Home.module.css';
 import { db } from '../firebase';
 import { collection, getDocs, doc, getDoc, updateDoc, query, orderBy, arrayUnion, arrayRemove } from 'firebase/firestore';
 import Navbar from '../components/Navbar';
+import PostItem from '../components/PostItem'; // Importando o novo componente
 
 export default function Home({ user }) {
   const [posts, setPosts] = useState([]);
@@ -20,7 +22,7 @@ export default function Home({ user }) {
         const querySnapshot = await getDocs(q);
         const postsData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setPosts(postsData);
-        
+
         const userIds = [...new Set(postsData.map(post => post.userId))];
         const usernamesData = {};
         for (const userId of userIds) {
@@ -43,11 +45,6 @@ export default function Home({ user }) {
     }
     fetchPosts();
   }, [user]);
-
-  const truncateContent = (content, maxLength) => {
-    if (content.length <= maxLength) return content;
-    return content.substring(0, maxLength) + '...';
-  };
 
   const handleLike = async (post) => {
     if (user) {
@@ -90,23 +87,7 @@ export default function Home({ user }) {
         </div>
         <ul className={styles.postList}>
           {posts.map((post) => (
-            <Link key={post.id} href={`/posts/${post.id}`} legacyBehavior>
-              <a className={styles.postItem}>
-                <li style={{ backgroundColor: post.userId === user?.uid ? 'var(--highlight-bg)' : 'var(--post-bg)' }}>
-                  <span className={styles.username}>{usernames[post.userId] || 'Unknown User'}</span>
-                  <p>{truncateContent(post.content, 200)}</p>
-                  <div className={styles.postFooter}>
-                    <button
-                      onClick={(e) => { e.preventDefault(); handleLike(post); }}
-                      className={`${styles.likeButton} ${post.likedBy?.includes(user?.uid) ? styles.liked : ''}`}
-                    >
-                      ❤ {post.likes || 0}
-                    </button>
-                    <span className={styles.responseCount}>{post.responses?.length || 0} responses</span>
-                  </div>
-                </li>
-              </a>
-            </Link>
+            <PostItem key={post.id} post={post} user={user} handleLike={handleLike} />
           ))}
         </ul>
       </div>
