@@ -1,0 +1,80 @@
+/* styles/PostItem.module.css */
+.postLink {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .postItem {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    margin: 10px 0;
+    padding: 20px;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+    word-break: break-word;
+  }
+  
+  .postItem:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .username {
+    font-weight: bold;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 5px;
+    text-decoration: none;
+  }
+  
+  .profileLink {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  
+  .postFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .likeButton {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .likeButton.liked {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .responseCount {
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+
+.responseIndicator {
+    font-size: 0.9rem;
+    color: var(--text-color-secondary);
+    margin-bottom: 10px;
+  }
+  
+  .originalPostLink {
+    color: var(--primary-color);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  

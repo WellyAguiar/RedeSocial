@@ -4,6 +4,7 @@ import { getAuth, signOut } from 'firebase/auth';
 import { useTheme } from '../contexts/ThemeContext';
 import ThemeToggle from './ThemeToggle'; // Importar o componente ThemeToggle
 import styles from '../styles/Navbar.module.css';
+import Link from 'next/link';
 
 export default function Navbar({ user, username, onToggle }) {
   const [expanded, setExpanded] = useState(false);
@@ -30,7 +31,9 @@ export default function Navbar({ user, username, onToggle }) {
     <div className={expanded ? styles.expanded : styles.collapsed} onClick={toggleNavbar}>
       {expanded && (
         <div className={styles.content}>
-          <p onClick={(e) => { e.stopPropagation(); router.push('/set-username'); }} className={styles.username}>{username}</p>
+          <Link href={`/profile/${user.uid}`} legacyBehavior>
+            <a className={styles.username}>{username}</a>
+        </Link>
           <div className={styles.bottomButtons}>
             <ThemeToggle /> {/* Adicionar o componente ThemeToggle */}
             <button onClick={(e) => { e.stopPropagation(); handleLogout(); }} className={styles.logoutButton}>Logout</button>

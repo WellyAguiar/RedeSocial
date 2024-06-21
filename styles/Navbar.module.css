@@ -1,70 +1,71 @@
 .collapsed {
-    position: fixed;
-    width: 50px;
-    height: 100vh;
-    background-color: var(--navbar-bg);
-    color: var(--text-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: width 0.3s ease;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    z-index: 10;
-  }
-  
-  .expanded {
-    position: fixed;
-    width: 300px;
-    height: 100vh;
-    background-color: var(--navbar-bg);
-    color: var(--text-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-    transition: width 0.3s ease;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    z-index: 10;
-  }
-  
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .username {
-    margin-bottom: auto;
-    cursor: pointer;
-    font-size: 30px;
-  }
-  
-  .bottomButtons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: auto;
-  }
-  
-  .logoutButton {
-    background-color: #d9534f;
-    border: none;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    align-self: center;
-  }
-  
-  .logoutButton:hover {
-    background-color: #c9302c;
-  }
-  
+  position: fixed;
+  width: 50px;
+  height: 100vh;
+  background-color: var(--navbar-bg);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s ease;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.expanded {
+  position: fixed;
+  width: 300px;
+  height: 100vh;
+  background-color: var(--navbar-bg);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  transition: width 0.3s ease;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.username {
+  margin-bottom: auto;
+  cursor: pointer;
+  font-size: 30px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.bottomButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto;
+}
+
+.logoutButton {
+  background-color: #d9534f;
+  border: none;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  align-self: center;
+}
+
+.logoutButton:hover {
+  background-color: #c9302c;
+}
