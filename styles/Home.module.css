@@ -114,3 +114,12 @@
   font-size: 1rem;
   color: var(--text-color);
 }
+
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 0px; /* Espaço para a navbar expandida */
+  }
+  .mainContent.expanded {
+    margin-left: 0px; /* Espaço para a navbar expandida */
+  }
+}

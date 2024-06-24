@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { getAuth, signOut } from 'firebase/auth';
-import { useTheme } from '../contexts/ThemeContext';
-import ThemeToggle from './ThemeToggle'; // Importar o componente ThemeToggle
-import styles from '../styles/Navbar.module.css';
-import Link from 'next/link';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { getAuth, signOut } from "firebase/auth";
+import { useTheme } from "../contexts/ThemeContext";
+import ThemeToggle from "./ThemeToggle";
+import styles from "../styles/Navbar.module.css";
+import Link from "next/link";
 
 export default function Navbar({ user, username, onToggle }) {
   const [expanded, setExpanded] = useState(false);
@@ -15,7 +15,7 @@ export default function Navbar({ user, username, onToggle }) {
     signOut(auth)
       .then(() => {
         console.log("User signed out");
-        router.push('/auth');
+        router.push("/auth");
       })
       .catch((error) => {
         console.error("Error signing out: ", error);
@@ -24,19 +24,40 @@ export default function Navbar({ user, username, onToggle }) {
 
   const toggleNavbar = () => {
     setExpanded(!expanded);
-    onToggle(!expanded); // Chama a função onToggle com o novo estado
+    onToggle(!expanded);
   };
 
+  // Adicionar ou remover a classe de navbar
+  useEffect(() => {
+    const navbarElement = document.querySelector(`.${styles.collapsed}`);
+    if (expanded) {
+      navbarElement.classList.add(styles.expanded);
+    } else {
+      navbarElement.classList.remove(styles.expanded);
+    }
+  }, [expanded]);
+
   return (
-    <div className={expanded ? styles.expanded : styles.collapsed} onClick={toggleNavbar}>
+    <div
+      className={`${styles.collapsed} ${styles.navbar}`}
+      onClick={toggleNavbar}
+    >
       {expanded && (
         <div className={styles.content}>
           <Link href={`/profile/${user.uid}`} legacyBehavior>
             <a className={styles.username}>{username}</a>
-        </Link>
+          </Link>
           <div className={styles.bottomButtons}>
-            <ThemeToggle /> {/* Adicionar o componente ThemeToggle */}
-            <button onClick={(e) => { e.stopPropagation(); handleLogout(); }} className={styles.logoutButton}>Logout</button>
+            <ThemeToggle />
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleLogout();
+              }}
+              className={styles.logoutButton}
+            >
+              Logout
+            </button>
           </div>
         </div>
       )}
