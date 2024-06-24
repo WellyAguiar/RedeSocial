@@ -1,5 +1,5 @@
 import '@/styles/globals.css';
-import '@/styles/Auth.css'; // Importação do CSS global movida para _app.js
+import '@/styles/Auth.module.css'; // Importação do CSS global movida para _app.js
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
