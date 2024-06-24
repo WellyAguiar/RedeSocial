@@ -27,7 +27,7 @@ export default function EmailAuth() {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      // Redirecionamento será tratado no componente Auth
+
     } catch (error) {
       console.error(error);
       setError(error.message);

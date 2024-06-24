@@ -69,3 +69,37 @@
 .logoutButton:hover {
   background-color: #c9302c;
 }
+
+.navbar {
+  transition: all 0.3s ease;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 768px) {
+  .collapsed {
+    width: 100vw;
+    height: 50px;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .expanded {
+    width: 100vw;
+    height: 500px;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: auto;
+  }
+
+  .content {
+    height: 100%;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
