@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import styles from '../styles/Form.module.css';
+import styles from '../styles/Auth.module.css';
 
 export default function EmailAuth() {
   const [email, setEmail] = useState('');
@@ -37,24 +37,24 @@ export default function EmailAuth() {
   return (
     <div className={styles.authContainer}>
       <h2>Email Authentication</h2>
-      <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+      <form className={styles.formContainer} onSubmit={(e) => e.preventDefault()}>
         <input 
           type="email" 
           value={email} 
           onChange={e => setEmail(e.target.value)} 
           placeholder="Email" 
-          className={styles.input} 
+          className={styles.formInput} 
         />
         <input 
           type="password" 
           value={password} 
           onChange={e => setPassword(e.target.value)} 
           placeholder="Password" 
-          className={styles.input} 
+          className={styles.formInput} 
         />
-        {error && <p className={styles.error}>{error}</p>}
-        <button onClick={handleSignUp} className={styles.button}>Sign Up</button>
-        <button onClick={handleSignIn} className={styles.button}>Sign In</button>
+        {error && <p className={styles.errorMessage}>{error}</p>}
+        <button onClick={handleSignUp} className={styles.formButton}>Sign Up</button>
+        <button onClick={handleSignIn} className={styles.formButton}>Sign In</button>
       </form>
     </div>
   );
