@@ -8,6 +8,7 @@ import {
   collection,
   query,
   where,
+  orderBy,
   getDocs,
   updateDoc,
   arrayUnion,
@@ -35,11 +36,13 @@ export default function UserProfile({ user }) {
           const userDoc = await getDoc(doc(db, "users", id));
           if (userDoc.exists()) {
             setProfileUser(userDoc.data());
+            console.log("User profile data:", userDoc.data());
           }
 
           const userPostsQuery = query(
             collection(db, "posts"),
-            where("userId", "==", id)
+            where("userId", "==", id),
+            orderBy("createdAt", "desc")
           );
           const userPostsSnapshot = await getDocs(userPostsQuery);
           const userPosts = userPostsSnapshot.docs.map((doc) => ({
@@ -47,21 +50,24 @@ export default function UserProfile({ user }) {
             ...doc.data(),
           }));
           setPosts(userPosts);
+          console.log("User posts:", userPosts);
 
           const likedPostsQuery = query(
             collection(db, "posts"),
-            where("likedBy", "array-contains", id)
+            where("likedBy", "array-contains", id),
+            orderBy("createdAt", "desc")
           );
           const likedPostsSnapshot = await getDocs(likedPostsQuery);
-          setLikedPosts(
-            likedPostsSnapshot.docs.map((doc) => ({
-              id: doc.id,
-              ...doc.data(),
-            }))
-          );
+          const likedPosts = likedPostsSnapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+          setLikedPosts(likedPosts);
+          console.log("Liked posts:", likedPosts);
 
           const userResponses = userPosts.filter((post) => post.responseTo);
           setResponses(userResponses);
+          console.log("User responses:", userResponses);
         } catch (error) {
           console.error("Error fetching user profile:", error);
         }
@@ -91,6 +97,17 @@ export default function UserProfile({ user }) {
               : p
           )
         );
+        setLikedPosts((prevLikedPosts) =>
+          prevLikedPosts.map((p) =>
+            p.id === post.id
+              ? {
+                  ...p,
+                  likes: p.likes - 1,
+                  likedBy: p.likedBy.filter((uid) => uid !== user.uid),
+                }
+              : p
+          )
+        );
         setResponses((prevResponses) =>
           prevResponses.map((p) =>
             p.id === post.id
@@ -109,6 +126,17 @@ export default function UserProfile({ user }) {
         });
         setPosts((prevPosts) =>
           prevPosts.map((p) =>
+            p.id === post.id
+              ? {
+                  ...p,
+                  likes: p.likes + 1,
+                  likedBy: [...(p.likedBy || []), user.uid],
+                }
+              : p
+          )
+        );
+        setLikedPosts((prevLikedPosts) =>
+          prevLikedPosts.map((p) =>
             p.id === post.id
               ? {
                   ...p,
@@ -167,16 +195,16 @@ export default function UserProfile({ user }) {
         </div>
         <div className={styles.profileDetails}>
           <p>
-            <strong>Name:</strong> {profileUser.name}
+            <strong>Name:</strong> {profileUser.name || "Not provided"}
           </p>
           <p>
-            <strong>Age:</strong> {profileUser.age}
+            <strong>Age:</strong> {profileUser.age || "Not provided"}
           </p>
           <p>
-            <strong>Gender:</strong> {profileUser.gender}
+            <strong>Gender:</strong> {profileUser.gender || "Not provided"}
           </p>
           <p>
-            <strong>Bio:</strong> {profileUser.bio}
+            <strong>Bio:</strong> {profileUser.bio || "Not provided"}
           </p>
         </div>
         <nav className={styles.navbar}>

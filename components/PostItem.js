@@ -38,8 +38,7 @@ export default function PostItem({ post, user, handleLike }) {
     }
   }, [post.userId, post.responseTo]);
 
-  const navigateToPost = (e) => {
-    e.stopPropagation();
+  const navigateToPost = () => {
     router.push(`/posts/${post.id}`);
   };
 
@@ -62,7 +61,7 @@ export default function PostItem({ post, user, handleLike }) {
       <p>{post.content}</p>
       <div className={styles.postFooter}>
         <button
-          onClick={(e) => { e.preventDefault(); handleLike(post); }}
+          onClick={(e) => { e.stopPropagation(); handleLike(post); }}
           className={`${styles.likeButton} ${post.likedBy?.includes(user?.uid) ? styles.liked : ''}`}
         >
           ❤ {post.likes || 0}
