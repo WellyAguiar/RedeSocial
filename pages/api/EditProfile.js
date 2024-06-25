@@ -25,10 +25,10 @@ export default function EditProfile() {
           if (userDoc.exists()) {
             const data = userDoc.data();
             setUsername(data.username);
-            setName(data.name);
-            setAge(data.age);
-            setGender(data.gender);
-            setBio(data.bio);
+            setName(data.name || "");
+            setAge(data.age || "");
+            setGender(data.gender || "");
+            setBio(data.bio || "");
           }
         } catch (error) {
           console.error("Error fetching user profile:", error);
@@ -42,8 +42,8 @@ export default function EditProfile() {
     setError("");
     setSuccess("");
     if (user) {
-      if (username.trim() === "" || name.trim() === "" || age.trim() === "" || gender.trim() === "" || bio.trim() === "") {
-        setError("All fields are required.");
+      if (username.trim() === "") {
+        setError("Username is required.");
         return;
       }
       try {
@@ -76,6 +76,7 @@ export default function EditProfile() {
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
           className={styles.input}
+          required
         />
         <input
           type="text"
