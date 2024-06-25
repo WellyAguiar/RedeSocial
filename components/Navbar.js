@@ -65,10 +65,12 @@ export default function Navbar({ user, username, onToggle }) {
         const otherParticipant = message.participants.find(
           (p) => p !== user.uid
         );
-        if (!acc[otherParticipant]) {
-          acc[otherParticipant] = [];
+        if (message.sender !== user.uid) {  // Only count if the user is not the sender
+          if (!acc[otherParticipant]) {
+            acc[otherParticipant] = [];
+          }
+          acc[otherParticipant].push(message);
         }
-        acc[otherParticipant].push(message);
         return acc;
       }, {});
 
