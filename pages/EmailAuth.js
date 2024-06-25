@@ -15,7 +15,7 @@ export default function EmailAuth() {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      router.push('/set-username'); // Redireciona para a página de configuração do username após a criação da conta
+      router.push('/edit-profile'); // Redireciona para a página de configuração do username após a criação da conta
     } catch (error) {
       console.error(error);
       setError(error.message);
