@@ -48,6 +48,27 @@
   font-weight: bold;
 }
 
+.unseenMessages {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: var(--background-color);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.messageItem {
+  padding: 5px 10px;
+  margin: 5px 0;
+  background-color: var(--post-bg);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.messageItem:hover {
+  background-color: var(--primary-hover-color);
+}
+
 .bottomButtons {
   display: flex;
   flex-direction: column;
@@ -69,6 +90,25 @@
 .logoutButton:hover {
   background-color: #c9302c;
 }
+
+.unseenCount {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-size: 0.875rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
 
 .navbar {
   transition: all 0.3s ease;
