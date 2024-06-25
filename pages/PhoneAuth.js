@@ -43,6 +43,7 @@ export default function PhoneAuth() {
       confirmationResult.confirm(verificationCode)
         .then((result) => {
           console.log("User signed in successfully", result.user);
+          router.push('/edit-profile');
         })
         .catch((error) => {
           console.error("Error verifying code", error);
